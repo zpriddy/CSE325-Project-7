@@ -1,0 +1,182 @@
+
+
+#>00000400          ___heap_size (linker command file)
+#>00000800          ___stack_size (linker command file)
+#>40000000          ___IPSBAR (linker command file)
+#>20000000          ___RAMBAR (linker command file)
+#>00010000          ___RAMBAR_SIZE (linker command file)
+#>00000000          ___FLASHBAR (linker command file)
+#>00080000          ___FLASHBAR_SIZE (linker command file)
+#>2000FFFC          ___SP_AFTER_RESET (linker command file)
+
+# .userram
+
+# .code
+
+# .vectorram
+
+# .vectors
+  20000500 00000400 .vectortable _vect	(exceptions_c.obj)
+
+# .text
+  20000900 00000008 .text   __initialize_system	(startcf_c.obj)
+  20000908 0000006C .text   __copy_rom_section	(startcf_c.obj)
+  20000974 0000005C .text   __copy_rom_sections_to_ram	(startcf_c.obj)
+  200009D0 0000022A .text   clear_mem	(startcf_c.obj)
+  20000BFA 00000096 .text   _startup	(startcf_c.obj)
+  20000C90 000000A4 .text   uc_pushb_init	(uc_pushb_c.obj)
+  20000D34 00000036 .text   uc_pushb1_isr	(uc_pushb_c.obj)
+  20000D6A 00000036 .text   uc_pushb2_isr	(uc_pushb_c.obj)
+  20000DA0 00000024 .text   rng_init	(rng_c.obj)
+  20000DC4 00000026 .text   rng_next	(rng_c.obj)
+  20000DEA 000003B2 .text   qspi_init	(qspi_c.obj)
+  2000119C 00000124 .text   qspi_tx	(qspi_c.obj)
+  200012C0 00000104 .text   pit0_init	(pit_c.obj)
+  200013C4 00000146 .text   pit1_init	(pit_c.obj)
+  2000150A 00000024 .text   pit0_enable	(pit_c.obj)
+  2000152E 00000026 .text   pit0_disable	(pit_c.obj)
+  20001554 000000B6 .text   pit_0_handler	(pit_c.obj)
+  2000160A 00000096 .text   pit1_isr	(pit_c.obj)
+  200016A0 0000001C .text   nunchuk_init	(oct_nunchuk_c.obj)
+  200016BC 00000018 .text   nunchuk_set_input_callback	(oct_nunchuk_c.obj)
+  200016D4 00000110 .text   nunchuk_read	(oct_nunchuk_c.obj)
+  200017E4 00000068 .text   nunchuk_xmit_cmd	(oct_nunchuk_c.obj)
+  2000184C 000000AC .text   oct_ledm_init	(oct_ledm_c.obj)
+  200018F8 0000006C .text   oct_ledm_refresh	(oct_ledm_c.obj)
+  20001964 00000552 .text   oct_ledm_display_pattern	(oct_ledm_c.obj)
+  20001EB6 000001CC .text   oct_ledm_refresh_row	(oct_ledm_c.obj)
+  20002082 0000000C .text   pb1_callback	(main_c.obj)
+  2000208E 00000008 .text   pb2_callback	(main_c.obj)
+  20002096 0000003C .text   hw_init	(main_c.obj)
+  200020D2 00000012 .text   main	(main_c.obj)
+  200020E4 000001A4 .text   start_new_game	(ledoff_c.obj)
+  20002288 0000005C .text   start_test_mode	(ledoff_c.obj)
+  200022E4 0000009A .text   check_win	(ledoff_c.obj)
+  2000237E 00000078 .text   reset_map	(ledoff_c.obj)
+  200023F6 0000076A .text   play_game	(ledoff_c.obj)
+  20002B60 0000073E .text   test_mode	(ledoff_c.obj)
+  2000329E 00000064 .text   win_mode	(ledoff_c.obj)
+  20003302 0000005C .text   update_nunchuk_game	(ledoff_c.obj)
+  20003360 000000F8 .text   @DummyFn1	(int_s.obj)
+  20003360 00000000 .text   int_config	(int_s.obj)
+  20003360 000000F8 .text   .text	(int_s.obj)
+  200033A2 00000000 .text   int_inhibit_all	(int_s.obj)
+  200033BE 00000000 .text   int_mask_src	(int_s.obj)
+  20003400 00000000 .text   int_unmask_src	(int_s.obj)
+  20003446 00000000 .text   int_uninhibit_all	(int_s.obj)
+  20003458 000000BC .text   i2c_init	(i2c_c.obj)
+  20003514 000000A8 .text   i2c_reset	(i2c_c.obj)
+  200035BC 000000FC .text   i2c_rx	(i2c_c.obj)
+  200036B8 0000004E .text   i2c_rx_byte	(i2c_c.obj)
+  20003706 00000028 .text   i2c_rxtx_end	(i2c_c.obj)
+  2000372E 00000086 .text   i2c_tx	(i2c_c.obj)
+  200037B4 00000080 .text   i2c_tx_addr	(i2c_c.obj)
+  20003834 0000004E .text   i2c_tx_byte	(i2c_c.obj)
+  20003882 00000014 .text   i2c_tx_complete	(i2c_c.obj)
+  20003898 000000C4 .text   @DummyFn1	(gpt_s.obj)
+  20003898 000000C4 .text   .text	(gpt_s.obj)
+  20003898 00000000 .text   gpt_clr_flag	(gpt_s.obj)
+  200038B8 00000000 .text   gpt_disable	(gpt_s.obj)
+  200038C4 00000000 .text   gpt_enable	(gpt_s.obj)
+  200038D4 00000000 .text   gpt_incap_config	(gpt_s.obj)
+  2000395C 0000026C .text   gpio_port_init	(gpio_c.obj)
+  20003BC8 00000058 .text   gpio_port_set_pin_state	(gpio_c.obj)
+  20003C20 00000004 .text   TrapHandler_printf	(exceptions_c.obj)
+  20003C24 00000200 .text   mcf_exception_handler	(exceptions_c.obj)
+  20003E24 00000020 .text   asm_exception_handler	(exceptions_c.obj)
+  20003E44 00000008 .text   mcf5xxx_wr_vbr	(exceptions_c.obj)
+  20003E4C 00000062 .text   initialize_exceptions	(exceptions_c.obj)
+  20003EAE 00000068 .text   dtim0_delay_us	(dtim_c.obj)
+  20003F16 00000086 .text   dtim0_init	(dtim_c.obj)
+  20003F9C 00000068 .text   dtim3_delay_us	(dtim_c.obj)
+  20004004 00000086 .text   dtim3_init	(dtim_c.obj)
+  2000408A 00000020 .text   pll_init	(TWR-MCF5225X_sysinit_c.obj)
+  200040AA 00000022 .text   scm_init	(TWR-MCF5225X_sysinit_c.obj)
+  200040CC 0000003E .text   __initialize_hardware	(TWR-MCF5225X_sysinit_c.obj)
+  2000410A 0000001C .text   __call_static_initializers	(librt.a cf_staticinitia)
+#>20004128          ___ROM_AT (linker command file)
+#>20004128          ___DATA_ROM (linker command file)
+
+# .data
+#>20005000          ___DATA_RAM (linker command file)
+#>20005000          __exception_table_start__ (linker command file)
+# Exception index
+  20005000 000002DC         Exception Table Index	()
+#>200052DC          __exception_table_end__ (linker command file)
+#>200052DC          ___sinit__ (linker command file)
+# Linker generated symbols
+  200052DC 00000004         static initializer	(linker generated)
+#>200052E0          __START_DATA (linker command file)
+  200052E0 00000080 .data   test_map_template	(ledoff_c.obj)
+  20005360 00000080 .data   win_pattern	(ledoff_c.obj)
+#>200053E0          __END_DATA (linker command file)
+#>200053E0          __START_SDATA (linker command file)
+#>200053E0          __END_SDATA (linker command file)
+#>200053E0          ___DATA_END (linker command file)
+#>200053E0          __SDA_BASE (linker command file)
+
+# .bss
+#>200053E0          ___BSS_START (linker command file)
+#>200053E0          __START_SBSS (linker command file)
+#>200053E0          __END_SBSS (linker command file)
+#>200053E0          __START_BSS (linker command file)
+  200053E0 00000004 .bss    g_pb1_callback	(uc_pushb_c.obj)
+  200053E4 00000004 .bss    g_pb2_callback	(uc_pushb_c.obj)
+  200053E8 00000002 .bss    g_cmd	(qspi_c.obj)
+  200053EC 00000004 .bss    counter	(pit_c.obj)
+  200053F0 00000004 .bss    g_timer0_callback	(pit_c.obj)
+  200053F4 00000004 .bss    g_callback_input	(oct_nunchuk_c.obj)
+  200053F8 00000001 .bss    g_row	(oct_ledm_c.obj)
+  200053F9 00000008 .bss    g_ledm2_red	(oct_ledm_c.obj)
+  20005401 00000008 .bss    g_ledm1_red	(oct_ledm_c.obj)
+  20005409 00000008 .bss    g_ledm2_green	(oct_ledm_c.obj)
+  20005411 00000008 .bss    g_ledm1_green	(oct_ledm_c.obj)
+  20005419 00000008 .bss    g_ledm2_blue	(oct_ledm_c.obj)
+  20005421 00000008 .bss    g_ledm1_blue	(oct_ledm_c.obj)
+  2000542C 00000004 .bss    g_console_update	(main_c.obj)
+  20005430 00000004 .bss    g_nunchuk_goto	(ledoff_c.obj)
+  20005434 00000080 .bss    basic_map	(ledoff_c.obj)
+  200054B4 00000080 .bss    basic_map_template	(ledoff_c.obj)
+  20005534 00000080 .bss    test_map	(ledoff_c.obj)
+  200055B4 00000004 .bss    win_count	(ledoff_c.obj)
+  200055B8 00000004 .bss    nunchuk_c	(ledoff_c.obj)
+  200055BC 00000004 .bss    nunchuk_z	(ledoff_c.obj)
+  200055C0 00000004 .bss    nunchuk_right	(ledoff_c.obj)
+  200055C4 00000004 .bss    nunchuk_left	(ledoff_c.obj)
+  200055C8 00000004 .bss    nunchuk_down	(ledoff_c.obj)
+  200055CC 00000004 .bss    nunchuk_up	(ledoff_c.obj)
+  200055D0 00000004 .bss    y	(ledoff_c.obj)
+  200055D4 00000004 .bss    x	(ledoff_c.obj)
+#>200055D8          __END_BSS (linker command file)
+#>200055D8          ___BSS_END (linker command file)
+
+# .custom
+#>200055D8          ___HEAP_START (linker command file)
+#>200055D8          ___heap_addr (linker command file)
+#>200059D8          ___HEAP_END (linker command file)
+#>200059D8          ___SP_END (linker command file)
+#>200061D8          ___SP_INIT (linker command file)
+#>20000000          ___VECTOR_RAM (linker command file)
+#>200061D8          __SP_INIT (linker command file)
+#>200059D8          ___mem_limit (linker command file)
+#>00000010          ___stack_safety (linker command file)
+#>20004508          _romp_at (linker command file)
+
+# .romp
+#>20004508          __S_romp (linker command file)
+
+
+# Memory map:
+  v_addr   p_addr   size     name
+  20000000 20000000 00000000 .vectorram vectorram
+  20000500 20000500 00000000 .code      code
+  20000500 20000500 00000400 .vectors   code
+  20000900 20000900 00003828 .text      code
+  20005000 20005000 00000000 .userram   userram
+  20005000 20004128 000003E0 .data      userram
+  200053E0 200053E0 000001F8 .bss       userram
+  200055D8 200055D8 00000000 .custom    userram
+  200055D8 20004508 00000018 .romp      userram
+
+# Link start time: Sat Dec 07 18:41:27 2013
+# Link end time: Sat Dec 07 18:41:27 2013
